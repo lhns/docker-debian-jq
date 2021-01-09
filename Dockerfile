@@ -4,7 +4,7 @@ ENV CLEANIMAGE_VERSION 2.0
 ENV CLEANIMAGE_URL https://raw.githubusercontent.com/LolHens/docker-cleanimage/$CLEANIMAGE_VERSION/cleanimage
 
 ENV JQ_REF a17dd32
-ENV JQ_URL https://raw.githubusercontent.com/LolHens/jq-buildenv/$JQ_REF/jq
+ENV JQ_URL https://github.com/LolHens/jq-buildenv/releases/download/$JQ_REF/jq
 
 
 ADD ["$CLEANIMAGE_URL", "/usr/local/bin/"]
