@@ -15,5 +15,5 @@ RUN apt update \
       curl \
  && cleanimage
 
-ADD ["JQ_URL", "/usr/bin/"]
+ADD ["$JQ_URL", "/usr/bin/"]
 RUN chmod +x "/usr/bin/jq"
