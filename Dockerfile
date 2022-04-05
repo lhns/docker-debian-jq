@@ -11,7 +11,8 @@ RUN apt-get update \
  && apt-get install -y \
       curl \
  && curl -sSfL -- "$GOJQ_URL" | tar -xzf - \
- && mv "$GOJQ_FILE" /usr/bin/jq \
+ && mv "$GOJQ_FILE/gojq" /usr/bin/jq \
+ && rm -Rf "$GOJQ_FILE" \
  && curl -sSfL -- "$CLEANIMAGE_URL" > "/usr/local/bin/cleanimage" \
  && chmod +x "/usr/local/bin/cleanimage" \
  && cleanimage
