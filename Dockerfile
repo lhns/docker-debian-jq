@@ -3,17 +3,16 @@ FROM debian
 ENV CLEANIMAGE_VERSION 2.0
 ENV CLEANIMAGE_URL https://raw.githubusercontent.com/LolHens/docker-cleanimage/$CLEANIMAGE_VERSION/cleanimage
 
-ENV JQ_REF a17dd32
-ENV JQ_URL https://github.com/LolHens/jq-buildenv/releases/download/$JQ_REF/jq
+ENV GOJQ_VERSION v0.12.7
+ENV GOJQ_FILE gojq_${GOJQ_VERSION}_linux_amd64
+ENV GOJQ_URL https://github.com/itchyny/gojq/releases/download/$GOJQ_VERSION/${GOJQ_FILE}.tar.gz
 
-
-ADD ["$CLEANIMAGE_URL", "/usr/local/bin/"]
-RUN chmod +x "/usr/local/bin/cleanimage"
-
-RUN apt update \
+RUN apt-get update \
  && apt-get install -y \
       curl \
+ && curl -sSfL -- "$GOJQ_URL" | tar -xzf - \
+ && mv "$GOJQ_FILE/gojq" /usr/bin/jq \
+ && rm -Rf "$GOJQ_FILE" \
+ && curl -sSfL -- "$CLEANIMAGE_URL" > "/usr/local/bin/cleanimage" \
+ && chmod +x "/usr/local/bin/cleanimage" \
  && cleanimage
-
-ADD ["$JQ_URL", "/usr/bin/"]
-RUN chmod +x "/usr/bin/jq"
