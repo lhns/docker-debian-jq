@@ -8,8 +8,8 @@ ENV JQ_URL https://github.com/jqlang/jq/releases/download/jq-${JQ_VERSION}/jq-li
 
 RUN apt-get update \
  && apt-get install -y curl \
- && curl -Lo /usr/bin/jq "$GOJQ_URL" \
+ && curl -Lo /usr/bin/jq -- "$JQ_URL" \
  && chmod +x /usr/bin/jq \
- && curl -Lo /usr/bin/cleanimage "$CLEANIMAGE_URL" \
+ && curl -Lo /usr/bin/cleanimage -- "$CLEANIMAGE_URL" \
  && chmod +x /usr/bin/cleanimage \
  && cleanimage
