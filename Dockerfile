@@ -1,9 +1,9 @@
-FROM debian:13.4
+FROM debian:13.7
 
 ENV CLEANIMAGE_VERSION 2.0
 ENV CLEANIMAGE_URL https://raw.githubusercontent.com/lhns/docker-cleanimage/$CLEANIMAGE_VERSION/cleanimage
 
-ENV JQ_VERSION 1.7.1
+ENV JQ_VERSION 1.8.2
 ENV JQ_URL https://github.com/jqlang/jq/releases/download/jq-${JQ_VERSION}/jq-linux-amd64
 
 RUN apt-get update \
